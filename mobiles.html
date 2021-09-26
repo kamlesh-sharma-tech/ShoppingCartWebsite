@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Online Shopping Site</title>
+  <link rel="stylesheet" href="css/mens-fashion.css">
+  <link rel="icon" href="shopping-cart.png">
+
+  <style>
+    #products img{
+      width: 90px !important;
+      height: 170px;
+      display: block;
+      margin: auto;
+    }
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.card h1{
+  font-size: 14px;
+  font-weight: bold;
+  
+}
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+  </style>
+
+</head>
+
+<body>
+
+  <!----------------- When sidebar opens then this overlay will appears --------------->
+  <div id="overlay" onclick="closeNav()"></div>
+
+  <!----------------------------- Navbar opens here --------------------------->
+  <div id="mainnav">
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(56, 55, 56);">
+
+      <!-- <i class="fa fa-bars mr-5" onclick="openNav()" style="color:#fff;font-size:26px;cursor:pointer"></i> -->
+
+      <a class="navbar-brand font-weight-bold " href="index.html"
+        style="color:orange;font-size:24px;font-family: 'Montserrat';">MINI<span style="color:orangered">
+          SHOP</span></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="form-inline my-lg-0">
+          <input class="form-control ml-5" type="Search" placeholder="Search for products..." aria-label="Search"
+            style="width:600px;padding: 22px;">
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <button class="mr-3" id="login" data-toggle="modal" data-target="#loginModal">Login</button>
+          </li>
+
+          <li class="nav-item">
+            <button class="mr-3" id="signup" data-toggle="modal" data-target="#signupModal">Create an account</button>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Your Cart</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+  <!-------------------- Navbar ends here ------------------------>
+
+
+  <!-- -----------------------------Login Modal------------------- -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" style="background-color: rgba(0,0,0,0.6);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: lightcoral">
+          <img src="images/user.png" alt="">
+          <h5 class="modal-title text-uppercase  ml-3" id="exampleModalLabel">Login to our website</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label>Email Address:</label>
+              <input type="email" class="form-control" id="email" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="password" class="form-control" id="pwd" required>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -----------------------------Login Modal ends here------------------- -->
+
+
+
+  <!-- -----------------------------Signup Modal------------------- -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" style="background-color: rgba(0,0,0,0.6);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: blueviolet">
+          <img src="images/user.png" alt="">
+          <h5 class="modal-title text-uppercase  ml-3" id="exampleModalLabel">Signup to our website</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label>Full Name:</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address:</label>
+              <input type="email" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password:</label>
+              <input type="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Signup</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -----------------------------Signup Modal ends here------------------- -->
+
+
+
+
+
+  <!---------------------------- Sidebar --------------------------------->
+  <!-- 
+  <div id="mySidenav" class="sidenav">
+    <header>
+      <a href="#" data-toggle="modal" data-target="#loginModal">Hello, Sign in</a>
+    </header>
+    <div class="sidenav-links">
+      <a href="index.html">Home</a>
+      <a href="#categories">Shop by Categories</a>
+      <a href="#">All Products</a>
+      <a href="#">Your Cart</a>
+      <a href="#">Help</a>
+      <a href="#">Contact us</a>
+      <a href="#">Our Team</a>
+      <a href="#">About us</a>
+       <a href="#">About us</a>
+    <a href="#">About us</a>
+    <a href="#">About us</a> -->
+  </div>
+  </div>
+
+
+  <!-------------------- Sidebar ends here --------------------------->
+
+
+  <section id="products">
+
+    <div class="row">
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile1.jpg" alt="Denim Jeans">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile2.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Redmi 8A Dual(Midnight Grey, 32 GB)</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Redmi 8A Dual(Midnight Grey, 32 GB)</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="electronics/mobile3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!------------------ 2nd row ----------------->
+    <div class="row">
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!---------------------- 3rd row ----------------------->
+    <div class="row">
+      <div class="col-md-2 col-6">
+      <div class="card">
+        <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+        <h1>Tailored Jeans</h1>
+        <p class="price">$19.99</p>
+        <p>Some text about the jeans..</p>
+        <p><button>Add to Cart</button></p>
+      </div>
+    </div>
+      
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+ 
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+
+
+      <div class="col-md-2 col-6">
+        <div class="card">
+          <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans..</p>
+          <p><button>Add to Cart</button></p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+  <!------------------------------------ Mainpart ends here ----------------------------------->
+
+
+
+  <!--------------------- Footer Starts here ----------------------->
+  <div class="footer">
+    <div class="backTop text-center">
+      <a href="#top" id="backTop" style="color:#fff;">Back to top</a>
+    </div>
+    <div class="contain">
+      <div class="col">
+        <h1>Company</h1>
+        <ul>
+          <li>About</li>
+          <li>Mission</li>
+          <li>Services</li>
+          <li>Social</li>
+          <li>Get in touch</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h1>Products</h1>
+        <ul>
+          <li>About</li>
+          <li>Mission</li>
+          <li>Services</li>
+          <li>Social</li>
+          <li>Get in touch</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h1>Accounts</h1>
+        <ul>
+          <li>About</li>
+          <li>Mission</li>
+          <li>Services</li>
+          <li>Social</li>
+          <li>Get in touch</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h1>Resources</h1>
+        <ul>
+          <li>Webmail</li>
+          <li>Redeem code</li>
+          <li>WHOIS lookup</li>
+          <li>Site map</li>
+          <li>Web templates</li>
+          <li>Email templates</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h1>Support</h1>
+        <ul>
+          <li>Contact us</li>
+          <li>Web chat</li>
+          <li>Open ticket</li>
+        </ul>
+      </div>
+      <div class="col social">
+        <h1>Social</h1>
+        <ul>
+          <li><i class="fa fa-facebook" width="32" style="width: 32px;"></i></li>
+          <li><i class="fa fa-instagram" width="32" style="width: 32px;"></i></li>
+          <li><i class="fa fa-google" width="32" style="width: 32px;"></i></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!----------------------------------- Footer ends here ------------------------------------>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+  <script src="js/smooth-scroll.js"></script>
+  <script>
+    // function openNav() {
+    //   document.getElementById("mySidenav").style.width = "300px";
+    //   document.getElementById("overlay").style.display = "block";
+    //   document.getElementById("closebtn").style.display = "block";
+    //   // document.body.style.overflow = "hidden";
+    //   // document.getElementById("main").style.marginLeft = "300px";
+
+    //   // document.getElementById("mainpart").style.backgroundColor = "rgba(0,0,0,0.4)";
+
+    // }
+    // function closeNav() {
+    //   document.getElementById("mySidenav").style.width = "0px";
+    //   document.getElementById("overlay").style.display = "none";
+    //   document.getElementById("closebtn").style.display = "none";
+    //   // document.body.style.overflow = "auto";
+    //   // document.body.style.backgroundColor = "lightslategray";
+    // }
+
+    var scroll = new SmoothScroll('a[href*="#"]');
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+
+</html>
